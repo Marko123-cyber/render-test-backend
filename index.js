@@ -1,8 +1,6 @@
 const express=require('express')
 const app=express()
-const cors=require('cors')
 app.use(express.static('dist'))
-app.use(cors())
 app.use(express.json())
 
 let notes = [
@@ -39,6 +37,28 @@ app.get('/api/notes/:id', (request, response) => {
 
     response.json(note);
 });
+
+app.put('/api/notes/:id', (request, response) => {
+    const id = request.params.id;
+    const body = request.body;
+
+    const noteIndex = notes.findIndex(note => note.id === id);
+    if (noteIndex === -1) {
+        return response.status(404).json({ error: 'Note not found' });
+    }
+
+    const updatedNote = {
+        ...notes[noteIndex],
+        content: body.content,
+        important: body.important,
+    };
+
+    notes[noteIndex] = updatedNote;
+    response.json(updatedNote);
+});
+
+
+
 
 const generate_index = () => {
     const max_index = notes.length ? Math.max(...notes.map(note => Number(note.id))) : 0;
