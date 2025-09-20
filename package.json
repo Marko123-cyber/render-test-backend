@@ -1,0 +1,16 @@
+{
+  "name": "demo",
+  "version": "1.5.0",
+  "description": "Full stack open backend tutorial follow",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "test": "echo \"There is no test command\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}
