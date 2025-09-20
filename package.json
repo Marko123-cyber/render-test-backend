@@ -3,10 +3,12 @@
   "version": "1.5.0",
   "description": "Full stack open backend tutorial follow",
   "main": "index.js",
-  "scripts": {
-    "dev": "node --watch index.js",
-    "test": "echo \"There is no test command\" && exit 1"
-  },
+"scripts": {
+  "dev": "node --watch index.js",
+  "build:ui": "rm -rf dist && cd ../part2-notes-frontend && npm install && npm run build && cp -r dist ../demo/dist",
+  "deploy:full": "npm run build:ui && git add . && git commit -m 'UI build' && git push",
+  "test": "echo \"There is no test command\" && exit 1"
+},
   "author": "",
   "license": "MIT",
   "dependencies": {
